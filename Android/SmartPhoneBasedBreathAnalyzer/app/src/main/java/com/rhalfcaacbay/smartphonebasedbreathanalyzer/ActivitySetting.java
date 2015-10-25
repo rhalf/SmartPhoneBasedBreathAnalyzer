@@ -4,16 +4,20 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,16 +30,21 @@ import java.util.Set;
 
 public class ActivitySetting extends AppCompatActivity  { //implements View.OnClickListener {
 
+    Button buttonStartTest;
+    ProgressBar progressBar;
+    TextView textViewCountValue;
+
     BluetoothAdapter bluetoothAdapter;
     String bluetoothDeviceName = "";
     Spinner spinnerBluetoothPairedDevices;
-    TextView textViewAnalogValueBacValue;
+    TextView textViewBacValueAverage,textViewBacValue;
     //ListView listViewData;
     //Threads
     BluetoothConnectThread bluetoothConnectThread;
     BluetoothConnectedThread bluetoothConnectedThread;
 
-    ArrayList<Float> readings = new ArrayList<>();
+
+
 
 
     protected Handler handler = new Handler() {
@@ -75,8 +84,8 @@ public class ActivitySetting extends AppCompatActivity  { //implements View.OnCl
                         float bac = Float.parseFloat(analogValue) / 5000;
 
                         DecimalFormat decimalFormat = new DecimalFormat("0.0000");
-                        textViewAnalogValueBacValue.setTypeface(Typeface.MONOSPACE);
-                        textViewAnalogValueBacValue.setText(decimalFormat.format(bac).toString() + "%");
+                        textViewBacValue.setTypeface(Typeface.MONOSPACE);
+                        textViewBacValue.setText(decimalFormat.format(bac).toString());
                         //adapter.add(analogValue);
                         //adapter.add(value);
                         // clear old title
@@ -99,9 +108,13 @@ public class ActivitySetting extends AppCompatActivity  { //implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_activity_setting);
 
+        buttonStartTest = (Button) findViewById(R.id.buttonStartTest);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        textViewCountValue = (TextView) findViewById(R.id.textViewCounterValue);
 
         spinnerBluetoothPairedDevices = (Spinner) findViewById(R.id.spinnerBluetoothPairedDevices);
-        textViewAnalogValueBacValue = (TextView) findViewById(R.id.textViewAnalogValueBacValue);
+        textViewBacValue = (TextView) findViewById(R.id.textViewBacValue);
+        textViewBacValueAverage = (TextView) findViewById(R.id.textViewBacValueAverage);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -122,6 +135,74 @@ public class ActivitySetting extends AppCompatActivity  { //implements View.OnCl
 //                android.R.layout.simple_list_item_1, listViewDataItems);
 //        listViewData.setAdapter(adapter);
 
+
+
+        buttonStartTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Thread thread = new Thread() {
+                    @Override
+                    public void run() {
+                        int count = 0;
+                        final ArrayList<Double> reading = new ArrayList<>();
+
+                        ToneGenerator toneG = new ToneGenerator(AudioManager.STREAM_ALARM, 100);
+                        toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 200);
+                        try {
+                            this.sleep(1000);
+                        } catch (Exception exception) {
+
+                        }
+                        while (count < 3000) {
+                            count++;
+                            final int finalCountProgressBar = count;
+                            final double finalCountValue= count / 1000f;
+
+                            String data = textViewBacValue.getText().toString();
+                            double bac = Double.parseDouble(data.substring(0,data.length()));
+                            reading.add(bac);
+                            Log.i("bac=", Double.toString(bac));
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    DecimalFormat decimalFormat = new DecimalFormat("0.0000");
+                                    textViewCountValue.setText(decimalFormat.format(finalCountValue));
+
+                                    int progress = (finalCountProgressBar / 3000) * 100;
+                                    progressBar.setMax(100);
+                                    progressBar.setProgress(progress);
+                                }
+                            });
+
+                            try {
+                                this.sleep(1);
+                            } catch (Exception exception) {
+
+                            }
+
+                        }
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                double average = 0;
+                                for (int index = 0; index < reading.size(); index++) {
+                                    average = average +  reading.get(index);
+                                }
+                                average = average / reading.size();
+
+                                DecimalFormat decimalFormat = new DecimalFormat("0.0000");
+                                textViewBacValueAverage.setText(decimalFormat.format(average));
+                            }
+                        });
+
+                        toneG.startTone(ToneGenerator.TONE_CDMA_ALERT_CALL_GUARD, 200);
+                    }
+                };
+                thread.start();
+            }
+        });
 
         connect();
     }
