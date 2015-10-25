@@ -6,82 +6,48 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ActivityMain">
-
+    tools:context=".ActivityMain"
+    android:background="@drawable/background">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#DDDDDD"
         android:orientation="vertical"
-        android:weightSum="100">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="match_parent"
-            android:background="#AAAAFF"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:gravity="center"
-            android:text="@string/app_name_description" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Smart Phone Based"
+        android:id="@+id/textViewT1"
+        android:textColor="#aaaaaa" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="70"
-            android:background="#CCCCCC"
-            android:orientation="vertical"
-            android:weightSum="100">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Breath Analyzer"
+        android:id="@+id/textViewT2"
+        android:textColor="#aaaaaa"
+     />
 
-            <Spinner
-                android:id="@+id/spinnerBluetoothPairedDevices"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="10" />
+    <Spinner
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="10"
-                android:orientation="horizontal">
+        android:id="@+id/spinnerBluetoothPairedDevices"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+      />
 
-                <Button
-                    android:id="@+id/buttonBluetoothConnect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    android:text="Connect" />
-
-                <Button
-                    android:id="@+id/buttonBluetoothScan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    android:text="Scan" />
-            </LinearLayout>
-
-            <ListView
-                android:id="@+id/listViewData"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="80" />
-
-            android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="20"
-            android:orientation="vertical"
-            android:weightSum="1">
-
-
-        </LinearLayout>
-
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:text="Start"
+        android:id="@+id/buttonStart"
+        android:layout_below="@+id/textViewT2"
+    />
     </LinearLayout>
-
-
 </RelativeLayout>

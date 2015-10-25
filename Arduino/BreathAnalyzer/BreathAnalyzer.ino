@@ -18,7 +18,7 @@ void loop() {
   sensorMilliVolt = sensorValue * (vccMilliVolt / 1023.0);
   
   
-  softwareSerial.print("{\"Device\":[{\"");
+  softwareSerial.print("{\"Device\":{\"");
   softwareSerial.print("analogValue");
   softwareSerial.print("\":\"");
   softwareSerial.print(sensorMilliVolt);
@@ -26,8 +26,19 @@ void loop() {
   softwareSerial.print("workingVoltage");
   softwareSerial.print("\":\"");
   softwareSerial.print(vccMilliVolt);
-  softwareSerial.print("\"}]}");
+  softwareSerial.print("\"}}");
   softwareSerial.print("\r\n");
+  
+//  Serial.print("{\"Device\":{\"");
+//  Serial.print("analogValue");
+//  Serial.print("\":\"");
+//  Serial.print(sensorMilliVolt);
+//  Serial.print("\",");
+//  Serial.print("workingVoltage");
+//  Serial.print("\":\"");
+//  Serial.print(vccMilliVolt);
+//  Serial.print("\"}}");
+//  Serial.print("\r\n");
   
   //if (softwareSerial.available()) {
   //  Serial.print(softwareSerial.read());
