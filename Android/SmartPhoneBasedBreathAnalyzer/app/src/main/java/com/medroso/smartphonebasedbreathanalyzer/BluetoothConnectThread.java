@@ -1,4 +1,4 @@
-package com.rhalfcaacbay.smartphonebasedbreathanalyzer;
+package com.medroso.smartphonebasedbreathanalyzer;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -58,6 +58,8 @@ public class BluetoothConnectThread extends Thread {
             } catch (IOException closeException) {
                 Log.d("closeException", closeException.toString());
             }
+
+            handler.obtainMessage(BluetoothStatus.CONNECTING_FAILED, null).sendToTarget();
             return;
         }
 
@@ -75,7 +77,7 @@ public class BluetoothConnectThread extends Thread {
      */
     public void cancel() {
         try {
-            //handler.obtainMessage(BluetoothStatus.DISCONNECTED, null).sendToTarget();
+            handler.obtainMessage(BluetoothStatus.DISCONNECTED, null).sendToTarget();
             bluetoothSocket.close();
         } catch (IOException e) {
         }

@@ -4,6 +4,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="app_name_description">Smart Phone Based Breath Analyzer</string>
+    <string name="title_layout_activity_test">SmartPhoneBasedBreathAnalyzer</string>
     <string name="title_layout_activity_setting">ActivitySetting</string>
+    <string name="label_offset">OffSet</string>
+    <string name="label_ratio">Ratio</string>
+
 
 </resources>

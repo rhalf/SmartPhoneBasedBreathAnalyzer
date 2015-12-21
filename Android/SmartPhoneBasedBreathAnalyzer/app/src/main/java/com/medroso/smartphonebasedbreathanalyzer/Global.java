@@ -1,4 +1,4 @@
-package com.rhalfcaacbay.smartphonebasedbreathanalyzer;
+package com.medroso.smartphonebasedbreathanalyzer;
 
 /**
  * Created by Ralph on 8/11/2015.

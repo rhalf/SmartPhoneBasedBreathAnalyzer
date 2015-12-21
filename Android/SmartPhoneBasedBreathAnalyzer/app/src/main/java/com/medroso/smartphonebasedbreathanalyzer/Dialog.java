@@ -1,4 +1,4 @@
-package com.rhalfcaacbay.smartphonebasedbreathanalyzer;
+package com.medroso.smartphonebasedbreathanalyzer;
 
 import android.content.Context;
 import android.widget.Toast;

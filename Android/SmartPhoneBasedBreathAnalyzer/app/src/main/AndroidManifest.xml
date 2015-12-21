@@ -7,11 +7,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/image_logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ActivityMain"
+            android:name="com.medroso.smartphonebasedbreathanalyzer.ActivityMain"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name" >
             <intent-filter>
@@ -20,9 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".ActivitySetting"
+            android:name="com.medroso.smartphonebasedbreathanalyzer.ActivityReader"
+            android:label="@string/title_layout_activity_test" >
+        </activity>
+        <activity
+            android:name="com.medroso.smartphonebasedbreathanalyzer.ActivitySetting"
             android:label="@string/title_layout_activity_setting" >
         </activity>
     </application>

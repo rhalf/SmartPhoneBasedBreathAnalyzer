@@ -1,8 +1,7 @@
-package com.rhalfcaacbay.smartphonebasedbreathanalyzer;
+package com.medroso.smartphonebasedbreathanalyzer;
 
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -84,6 +83,7 @@ public class BluetoothConnectedThread extends Thread {
     public void cancel() {
 
         try {
+            handler.obtainMessage(BluetoothStatus.DISCONNECTED, null).sendToTarget();
             bluetoothSocket.close();
         } catch (IOException e) {
         }

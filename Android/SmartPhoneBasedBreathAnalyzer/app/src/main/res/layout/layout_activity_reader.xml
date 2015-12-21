@@ -1,0 +1,147 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
+    tools:context="com.medroso.smartphonebasedbreathanalyzer.ActivityReader"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DDDDDD"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="40"
+            android:background="#CCCCCC"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="50">
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textSize="25dp"
+                    android:text="Blood Alcohol Content"
+                    android:id="@+id/textViewBacLabel1"
+                    android:layout_weight="10"
+                    android:gravity="center"/>
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="fill_parent"-->
+                    <!--android:textSize="50dp"-->
+                    <!--android:text="0.0000"-->
+                    <!--android:fontFamily=""-->
+                    <!--android:id="@+id/textViewBacValue"-->
+                    <!--android:layout_weight="10"-->
+                    <!--android:gravity="center" />-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="50">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textSize="50dp"
+                    android:text="0.0000"
+                    android:fontFamily=""
+                    android:id="@+id/textViewBacValue"
+                    android:layout_weight="10"
+                    android:gravity="center_horizontal" />
+                </LinearLayout>
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="fill_parent"-->
+                    <!--android:textSize="30dp"-->
+                    <!--android:text="BAC :"-->
+                    <!--android:id="@+id/textViewBacLabel2"-->
+                    <!--android:layout_weight="10"-->
+                    <!--android:gravity="center"/>-->
+                <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="fill_parent"-->
+                    <!--android:textSize="30dp"-->
+                    <!--android:text="0.0000"-->
+                    <!--android:fontFamily=""-->
+                    <!--android:id="@+id/textViewBacValueAverage"-->
+                    <!--android:layout_weight="10"-->
+                    <!--android:gravity="center" />-->
+            <!--</LinearLayout>-->
+
+            <!--<ListView-->
+                <!--android:id="@+id/listViewData"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="80" />-->
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="30">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:textSize="50dp"
+                android:text="0.0000"
+                android:id="@+id/textViewCounterValue"
+                android:layout_weight="10"
+                android:gravity="bottom|center" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+
+                android:textSize="30dp"
+                android:text="Seconds"
+                android:id="@+id/textViewCounterLabel"
+                android:layout_weight="10"
+                android:gravity="top|center" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/progressBar" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:text="Start"
+                android:id="@+id/buttonStartTest"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                android:enabled="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

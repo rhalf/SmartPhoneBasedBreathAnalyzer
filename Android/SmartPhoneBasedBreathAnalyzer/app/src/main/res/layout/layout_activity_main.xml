@@ -2,10 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ActivityMain"
     android:background="@drawable/background">
 
@@ -14,40 +10,59 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Smart Phone Based"
-        android:id="@+id/textViewT1"
-        android:textColor="#aaaaaa" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/image1"
+            >
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Breath Analyzer"
-        android:id="@+id/textViewT2"
-        android:textColor="#aaaaaa"
-     />
-
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+            android:padding="10dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25dp"
+                android:text=
+                    "Smartphone-Based
+Breath Analyzer in
+Android Platform"
+                android:id="@+id/textViewT1"
+                android:textColor="#FFFFFF" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp"
+                android:text="This application is intended to read the BAC of a Drunk Driver"
+                android:padding="10dp"
+                android:textColor="#333333" />
+        </LinearLayout>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@color/material_deep_teal_500">
     <Spinner
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-
         android:id="@+id/spinnerBluetoothPairedDevices"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-      />
-
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>
     <Button
+        android:layout_margin="5dp"
         android:layout_width="fill_parent"
         android:layout_height="80dp"
         android:text="Start"
         android:id="@+id/buttonStart"
-        android:layout_below="@+id/textViewT2"
     />
     </LinearLayout>
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.rhalfcaacbay.smartphonebasedbreathanalyzer;
+package com.medroso.smartphonebasedbreathanalyzer;
 
 public class Enum {
     protected int _enumValue;
